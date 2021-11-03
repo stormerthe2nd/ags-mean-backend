@@ -10,7 +10,7 @@ const searchRouter = require("./routes/search")
 const refreshRouter = require("./routes/refresh")
 const authRouter = require("./routes/auth")
 
-const { DB_URL, GOOGLE_APPLICATION_CREDENTIALS, DEV } = process.env
+const { DB_PW, GOOGLE_APPLICATION_CREDENTIALS, DEV } = process.env
 var app = express();
 
 
@@ -33,7 +33,7 @@ const drive = google.drive({
 
 // database setup
 const mongoose = require("mongoose")
-mongoose.connect(DB_URL, {
+mongoose.connect("mongodb+srv://ags:" + DB_PW + "@cluster0.ul5pe.mongodb.net/ags_mean?retryWrites=true&w=majority", {
   useNewUrlParser: true, useUnifiedTopology: true,
   useCreateIndex: true, useFindAndModify: false
 }).then(() => console.log("database connected"))
